@@ -1,0 +1,30 @@
+{
+  "name": "fishesavings",
+  "version": "1.0.0",
+  "description": "Fisherman Cooperative Savings System",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energytech21/fishESavings.git"
+  },
+  "keywords": [
+    "UHACKADEMIA"
+  ],
+  "author": "STI Gensan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/energytech21/fishESavings/issues"
+  },
+  "homepage": "https://github.com/energytech21/fishESavings#readme",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.15.6",
+    "mysql": "^2.16.0"
+  }
+}
