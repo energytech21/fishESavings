@@ -9,7 +9,7 @@ const mysql = require('mysql'),
         host: 'localhost',
         user: 'root',
         password: 'administrator',
-        database: 'fedsdb',
+        database: 'fishesavings',
         debug: false
     };
 
@@ -20,7 +20,7 @@ var server = http.Server(app);
 app.use(connection(mysql, config, 'request'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var MemoryStore = session.MemoryStore;
@@ -34,7 +34,11 @@ app.use(session({
 //#endregion
 
 var rIndex = require('./routes/index');
+var rAuth = require('./routes/OAuth');
+var rAdmin = require('./routes/admin');
 
 server.listen(process.env.port || 80);
 
 app.use('/',rIndex);
+app.use('/auth',rAuth);
+app.use('/admin',rAdmin);

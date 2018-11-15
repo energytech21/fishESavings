@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= title%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+       <!-- imports -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/semantic-ui/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/semantic-calendar/calendar.min.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/css/semantic-ui/semantic.min.js"></script>
+    <script src="/css/semantic-calendar/calendar.min.js"></script>
+    <!-- style-->
+    <style>
+        .logobg{
+            background-color: #1B325F !important;
+        }
+        .ui.inverted.menu .orange.active.item{
+            color:#123 !important;
+        }
+        .ui.inverted.menu .orange.item{
+            color:#f2711c !important;
+        }
+    </style>
+</head>
+<body>
+    <% include admin_menu %>
+    <div class="pusher">
+            <div class="ui grid" style="margin:0px !important;">
+                <div class="row">
+                    <div class="fluid wide column">
+                        <div class="ui huge breadcrumb">
+                            <div class="section">Clients Management</div>
+                            <div class="divider"> / </div>
+                            <div class="active section">Register Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="seven wide column">
+                        <div class="ui dividing header">Personal Information</div>
+                        <form class="ui form" id="frm_info">
+                            <div class="field">
+                                <label>First Name *</label>
+                                <input name="info_fname" placeholder="ex. Juan">
+                            </div>
+                            <div class="field">
+                                <label>Surname *</label>
+                                <input name="info_lname" placeholder="ex. Dela Cruz">
+                            </div>
+                            <div class="field">
+                                <label>Middle Name</label>
+                                <input name="info_mname" placeholder="ex. Bautista"> 
+                            </div>
+                            <div class="inline fields">
+                                <label >Gender</label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="info_gender" checked="" tabindex="0" class="hidden">
+                                        <label>Male</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="info_gender" tabindex="0" class="hidden">
+                                        <label>Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui calendar" id="calendar">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" name="info_bdate" placeholder="Birthday">
+                                    </div>
+                                </div>
+                            </div>      
+                             <div class="field">
+                                <label>Address *</label>
+                                <textarea rows=2 name="info_address" placeholder="Address"></textarea>
+                            </div>   
+                            <div class="field">
+                                <label>Contact Number</label>
+                                <input type="text" name="info_cnum" placeholder="ex +639123456789">
+                            </div>
+                        </form>
+                    </div>
+                     <div class="six wide column" >
+                        <div class="ui grid">
+                            <div class="row">
+                                <div class="fluid wide column">
+                                    <div class="ui dividing header">Account Information</div>
+                                    <form class="ui form" id="frm_acc">
+                                        <div class="field">
+                                            <label>User Name *</label>
+                                            <input name="bank_uname" placeholder="ex. user123">
+                                        </div>
+                                        <div class="field">
+                                            <label>Password *</label>
+                                            <input name="bank_pword" type="password" placeholder="ex. Dela Cruz">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="fluid wide column">
+                                    <div class="ui dividing header">Cooperative Information</div>
+                                    <form class="ui form" id="frm_coop">
+                                        <div class="field">
+                                            <label>Account Name *</label>
+                                            <input name="bank_accname" placeholder="ex. Fishermen Alliance">
+                                        </div>
+                                        <div class="field">
+                                            <label>Coop Name</label>
+                                            <input name="coop_name" placeholder="">
+                                        </div>
+                                        <div class="field">
+                                            <label>Address</label>
+                                            <textarea rows=3 name="coop_address" placeholder=""></textarea>
+                                        </div>
+                                        <div class="field">
+                                            <label>Contact Number</label>
+                                            <input name="coop_cnum" placeholder="">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>      
+                            <div class="right aligned row">
+                                <div class="column">
+                                     <button class="ui orange button"
+                                    style="color:rgb(0, 0, 0) !important;" onclick="register()">Register</button>
+                                    
+                                    <button class="ui logobg button"
+                                    style="color:rgb(0, 0, 0) !important;" onclick="reset()">Cancel</button>
+                                </div>
+                            </div>          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    <script>
+        $('.ui.sidebar').sidebar();
+        $('.ui.radio.checkbox').checkbox();
+        $('#calendar').calendar();
+    </script>
+    <script src="/scripts/admin.js"></script>
+</body>
+</html>
