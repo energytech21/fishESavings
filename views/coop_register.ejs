@@ -26,7 +26,7 @@
 </head>
 <body>
     
-    <% include admin_menu %>
+    <% include coop_menu %>
     <div class="pusher">
             <div class="ui inverted logobg secondary menu">
                     <a class="item" onclick="toggle()">
@@ -39,14 +39,14 @@
                 <div class="row">
                     <div class="fluid wide column">
                         <div class="ui huge breadcrumb">
-                            <div class="section">Clients Management</div>
+                            <div class="section">Member Management</div>
                             <div class="divider"> / </div>
-                            <div class="active section">Register Client</div>
+                            <div class="active section">Register Member</div>
                         </div>
                     </div>
                 </div>
                 <div class="row" >
-                    <div class="eight wide column">
+                    <div class="sixteen wide column">
                         <div class="ui dividing header">Personal Information</div>
                         <form class="ui form" id="frm_info">
                             <div class="field">
@@ -92,14 +92,7 @@
                                 <label>Contact Number</label>
                                 <input type="text" name="info_cnum" placeholder="ex +639123456789">
                             </div>
-                        </form>
-                    </div>
-                     <div class="eight wide column">
-                        <div class="ui grid">
-                            <div class="row">
-                                <div class="fluid wide column">
-                                    <div class="ui dividing header">Account Information</div>
-                                    <form class="ui form" id="frm_acc">
+                            <div class="ui dividing header">Account Information</div>
                                         <div class="field">
                                             <label>User Name *</label>
                                             <input name="bank_uname" placeholder="ex. user123">
@@ -108,52 +101,26 @@
                                             <label>Password *</label>
                                             <input name="bank_pword" type="password" placeholder="ex. Dela Cruz">
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="fluid wide column">
-                                    <div class="ui dividing header">Cooperative Information</div>
-                                    <form class="ui form" id="frm_coop">
-                                        <div class="field">
-                                            <label>Account Name *</label>
-                                            <input name="bank_accname" placeholder="ex. Fishermen Alliance">
-                                        </div>
-                                        <div class="field">
-                                            <label>Coop Name</label>
-                                            <input name="coop_name" placeholder="">
-                                        </div>
-                                        <div class="field">
-                                            <label>Address</label>
-                                            <textarea rows=3 name="coop_address" placeholder=""></textarea>
-                                        </div>
-                                        <div class="field">
-                                            <label>Contact Number</label>
-                                            <input name="coop_cnum" placeholder="">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>      
-                            <div class="right aligned row">
-                                <div class="column">
-                                     <button class="ui orange button"
-                                    style="color:rgb(0, 0, 0) !important;" onclick="register()">Register</button>
+                        </form>
+                    </div>
+                </div>
+        
+                <div class="right aligned row">
+                    <div class="column">
+                        <button class="ui orange button"
+                        style="color:rgb(0, 0, 0) !important;" onclick="register()">Register</button>
                                     
-                                    <button class="ui logobg button"
-                                    style="color:rgb(0, 0, 0) !important;" onclick="reset()">Cancel</button>
-                                </div>
-                            </div>          
-                        </div>
+                        <button class="ui logobg button"
+                        style="color:rgb(0, 0, 0) !important;" onclick="reset()">Cancel</button>
                     </div>
                 </div>
             </div>
-
-    </div>
+        </div>
     <script>
         $('.ui.sidebar').sidebar();
         $('.ui.radio.checkbox').checkbox();
         $('#calendar').calendar({type:'date'});
     </script>
-    <script src="/scripts/admin.js"></script>
+    <script src="/scripts/coop_add.js"></script>
 </body>
 </html>

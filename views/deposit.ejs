@@ -1,0 +1,35 @@
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script>
+            var amt = prompt("Enter amount to deposit", "0");
+            var num = sessionStorage.getItem('acc_num');
+            console.log(num);
+               var data = `{
+                   "amount": ${amt}
+               }`; 
+               console.log(data);
+               var token = '<%= token_data %>';
+               $.ajax({
+                   url:'https://api-uat.unionbankph.com/partners/sb/sandbox/v1/accounts/deposit',
+                   type:'POST',
+                   beforeSend: function(request) {
+                       request.setRequestHeader("accept", 'application/json');
+                       request.setRequestHeader("content-type", 'application/json');
+                       request.setRequestHeader("x-ibm-client-id", 'c79ef80b-c25f-406e-8369-6ea87b96bb7b');
+                       request.setRequestHeader("x-ibm-client-secret",'P4pE8lX2wK3oD1jS4lE2gB6rV7bR3cT4rH6wJ7cN4rF8qC4bY6');
+                       request.setRequestHeader('authorization',"Bearer "+token);
+                   },
+                   data: data,
+                   success:(response)=>{
+                       $.ajax(
+                           {
+                               url:'/coop/rec_trans',
+                               data:{type:"DEPOSIT",amt: amt,acc_num: num},
+                               success:(response)=>{ 
+                                 window.close()
+                                },
+                               type:'POST'
+                        });
+                   }
+               
+               });
+</script>

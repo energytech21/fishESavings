@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= title%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+       <!-- imports -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/semantic-ui/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/semantic-calendar/calendar.min.css">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/css/semantic-ui/semantic.min.js"></script>
+    <script src="/css/semantic-calendar/calendar.min.js"></script>
+    <script src="/js/jquery.datatables.min.js"></script>
+    <script src="/js/datatables.semanticui.min.js"></script>
+    <!-- style-->
+    <style>
+        .logobg{
+            background-color: #1B325F !important;
+        }
+        .ui.inverted.menu .orange.active.item{
+            color:#123 !important;
+        }
+        .ui.inverted.menu .orange.item{
+            color:#f2711c !important;
+        }
+    </style>
+</head>
+<body>
+    <% include admin_menu %>
+    <div class="pusher">
+            <div class="ui inverted logobg secondary menu">
+                    <a class="item" onclick="toggle()">
+                        <div class="ui logo icon small image">
+                            <img src="/images/logo-horizontal-light.png">
+                        </div>
+                    </a>
+                </div>
+            <div class="ui grid" style="margin:0px !important;">
+                <div class="row">
+                    <div class="fluid wide column">
+                        <div class="ui huge breadcrumb">
+                            <div class="section">Clients Management</div>
+                            <div class="divider"> / </div>
+                            <div class="active section">Manage Clients</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                   <div class="fluid wide column">
+                       <table class="ui selectable table" id="clients">
+                          <thead>
+                            <tr>
+                                <th>Account Number</th>
+                                <th>Owner</th>
+                                <th>Coop</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                          </tbody>
+                       </table>
+                   </div>
+                </div>
+            </div>
+
+    </div>
+    <script>
+        $('.ui.sidebar').sidebar();
+        $('.ui.radio.checkbox').checkbox();
+        $('#calendar').calendar({type:'date'});
+    </script>
+    <script src="/scripts/manage_clients.js"></script>
+</body>
+</html>

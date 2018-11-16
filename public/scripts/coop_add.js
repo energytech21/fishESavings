@@ -1,3 +1,6 @@
+$(document).ready(()=>{
+
+});
 (function() {
     Date.prototype.toYMD = Date_toYMD;
     function Date_toYMD() {
@@ -14,22 +17,19 @@
         return year + "-" + month + "-" + day;
     }
 })();
-$(document).ready(()=>{
-    $('#register').removeClass('item').addClass('active orange item');
-})
+
+function toggle(){
+    $('.ui.sidebar').sidebar('toggle');
+}
+
 function register() {
     var info = $('#frm_info').serializeArray();
-    var coop_form = $('#frm_coop').serializeArray();
-    var acc_form = $('#frm_acc').serializeArray();
+
     var date = new Date($('#calendar').calendar('get date')).toYMD();
   
     console.log(date);
 
-    var coop_info = JSON.parse(`{
-        "coop_name": "${coop_form[1].value}",
-        "coop_address": "${coop_form[2].value}",
-        "coop_cnum": "${coop_form[3].value}"
-    }`);
+
 
     var user_info = JSON.parse(`{
         "fname": "${info[0].value}",
@@ -42,11 +42,11 @@ function register() {
     }`);
 
     var data = `{
-        "username": "${acc_form[0].value}",
-        "password": "${acc_form[1].value}",
-        "account_name": "${coop_form[0].value}"
+        "username": "${info[7].value}",
+        "password": "${info[8].value}",
+        "account_name": "${info[0].value} ${info[1].value} ${info[2].value}"
     }`; 
-
+    
     $.ajax({
         url:'https://api-uat.unionbankph.com/partners/sb/sandbox/v1/accounts',
         type:'POST',
@@ -60,9 +60,9 @@ function register() {
         success:(response)=>{
             var resData = response.data.account;
             $.ajax({
-                url:'./admin/register',
+                url:'/coop/register',
                 type:'POST',
-                data:{user_info, coop_info, acc_num: resData.account_number,username:acc_form[0].value},
+                data:{user_info, acc_num: resData.account_number , username:info[7].value},
                 success:(response)=>{
                     alert(response);
                 },
@@ -71,7 +71,4 @@ function register() {
         }
     
     });
-}
-function toggle(){
-    $('.ui.sidebar').sidebar('toggle');
 }

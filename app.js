@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 var MemoryStore = session.MemoryStore;
 app.use(session({
     name: 'app.sid',
@@ -36,9 +36,10 @@ app.use(session({
 var rIndex = require('./routes/index');
 var rAuth = require('./routes/OAuth');
 var rAdmin = require('./routes/admin');
-
+var rCoop = require('./routes/coop');
 server.listen(process.env.port || 80);
 
 app.use('/',rIndex);
 app.use('/auth',rAuth);
 app.use('/admin',rAdmin);
+app.use('/coop',rCoop);
